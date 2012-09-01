@@ -1,0 +1,7 @@
+D:\Value\Value.Helper\ValueHelper.test\bin\Debug\ValueHelper.test.exe
+D:\Value\Value.Helper\ValueHelper.test\bin\Debug\ValueHelper.test.pdb
+D:\Value\Value.Helper\ValueHelper.test\bin\Debug\ValueHelper.dll
+D:\Value\Value.Helper\ValueHelper.test\bin\Debug\ValueHelper.pdb
+D:\Value\Value.Helper\ValueHelper.test\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Value\Value.Helper\ValueHelper.test\obj\x86\Debug\ValueHelper.test.exe
+D:\Value\Value.Helper\ValueHelper.test\obj\x86\Debug\ValueHelper.test.pdb
