@@ -77,7 +77,25 @@ namespace ValueHelper
         /// <param name="fileFullName"></param>
         public void CreateFile(String fileFullName)
         {
-            this.createFile(fileFullName);
+            if (File.Exists(fileFullName))
+                throw new FileExsistException();
+
+            try
+            {
+                Monitor.Enter(this);
+                var filePath = this.getFilePath(fileFullName);
+                if (!Directory.Exists(filePath))
+                    Directory.CreateDirectory(filePath);
+
+                FileStream fileStream = new FileStream(fileFullName, FileMode.Create);
+                fileStream.Flush();
+                fileStream.Close();
+                Monitor.Exit(this);
+            }
+            catch (System.Exception ex)
+            {
+                throw (ex);
+            }
         }
 
         /// <summary>
@@ -182,38 +200,12 @@ namespace ValueHelper
             {
                 Monitor.Enter(this);
                 if (!File.Exists(fileFullName))
-                    this.createFile(fileFullName);
+                    throw new FileNotFoundException();
 
                 StreamWriter streamWriter = new StreamWriter(fileFullName, true);
                 streamWriter.WriteLine(content);
                 streamWriter.Flush();
                 streamWriter.Close();
-                Monitor.Exit(this);
-            }
-            catch (System.Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        /// <summary>
-        ///  创建文件
-        /// </summary>
-        private void createFile(String fileFullName)
-        {
-            if (File.Exists(fileFullName))
-                throw new FileExsistException();
-
-            try
-            {
-                Monitor.Enter(this);
-                var filePath = this.getFilePath(fileFullName);
-                if (!Directory.Exists(filePath))
-                    Directory.CreateDirectory(filePath);
-
-                FileStream fileStream = new FileStream(fileFullName, FileMode.Create);
-                fileStream.Flush();
-                fileStream.Close();
                 Monitor.Exit(this);
             }
             catch (System.Exception ex)
