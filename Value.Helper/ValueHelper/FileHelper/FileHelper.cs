@@ -232,10 +232,10 @@ namespace ValueHelper
             }
         }
 
-        private String getFilePath(String fileFuleName)
+        private String getFilePath(String fileFulName)
         {
-            var fileName = Path.GetFileName(fileFuleName);
-            var filePath = fileFuleName.Substring(0, fileFuleName.Length - fileName.Length - 1);
+            var fileName = Path.GetFileName(fileFulName);
+            var filePath = fileFulName.Substring(0, fileFulName.Length - fileName.Length - 1);
             return filePath;
         }
 
