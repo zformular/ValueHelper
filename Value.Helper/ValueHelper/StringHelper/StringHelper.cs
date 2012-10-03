@@ -5,7 +5,6 @@
  |        E-mail: zformular@163.com           |
  |             Date: 8.29.2012                |
  |                                            |
- |                                            |
  ╰==========================================╯
 */
 
@@ -13,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace ValueHelper
 {
@@ -37,6 +38,17 @@ namespace ValueHelper
 
             String[] result = new String[itemCount];
             Array.Copy(items, result, result.Length);
+            return result;
+        }
+
+        /// <summary>
+        ///  根据回车换行分割字符串
+        ///  CRLF(carriage return/line feed)
+        /// </summary>
+        /// <returns></returns>
+        public static String[] SplitByCRLF(String source, StringSplitOptions stringSplitOptions)
+        {
+            String[] result = source.Split(new String[] { "\r\n" }, stringSplitOptions);
             return result;
         }
     }

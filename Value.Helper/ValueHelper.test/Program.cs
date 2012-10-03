@@ -41,7 +41,7 @@ namespace ValueHelper.test
             var encryptCodeMD5 = MD5Helper.Encrypt(source);
             Console.WriteLine(encryptCodeMD5);
             Console.WriteLine("MD5Helper Result");
-
+            Console.WriteLine();
             #endregion
 
             #region ValueDESHelper
@@ -56,7 +56,7 @@ namespace ValueHelper.test
             var decryptCodeDES = DESHelper.Decrypt(source, key);
             Console.WriteLine(decryptCodeDES);
             Console.WriteLine("DESHelper Result");
-
+            Console.WriteLine();
             #endregion
 
             #region StringHelper
@@ -70,38 +70,51 @@ namespace ValueHelper.test
             {
                 Console.Write(item + " ");
             }
+
+            var str2 = "asdajdahda\r\nasdasda\r\nasdasdasd\r\n";
+            Console.WriteLine("asdajdahda\\r\\nasdasda\\r\\nasdasdasd\\r\\nsdfsdfsdf");
+            Console.WriteLine("StringHelper.SplitByCRLF()");
+            var tst = StringHelper.SplitByCRLF(str2, StringSplitOptions.RemoveEmptyEntries);
+
+            var strArry2 = StringHelper.SplitByCRLF(str2, StringSplitOptions.None);
+            foreach (var item in strArry2)
+            {
+                Console.Write(item + " ");
+            }
+
             Console.WriteLine();
             Console.WriteLine("StringHelper Result");
+            Console.WriteLine();
             #endregion
 
             #region RandomHelper
 
             Console.WriteLine(RandomHelper.NewRandom());
-
             Console.WriteLine(RandomHelper.NewRandom(6));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.Number));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.String));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.Number, 6));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.String, 6));
-
             Console.WriteLine(RandomHelper.NewRandom('Z', 'Z'));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.Number, '1', 'a'));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.String, 'a', 'f'));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.Number, '1', '4', 6));
-
             Console.WriteLine(RandomHelper.NewRandom(RandomType.String, 'a', 'f', 6));
-
             Console.WriteLine("RandomHelper Result");
+            Console.WriteLine();
+
             #endregion
 
+            #region QPHelper
 
+            String QPString = "管理员";
+            String QPEncodeStr = QPHelper.Encrypt(QPString, Encoding.UTF8);
+            Console.WriteLine(QPEncodeStr);
+            Console.WriteLine(QPHelper.Decrypt2(QPEncodeStr, Encoding.UTF8));
+            Console.WriteLine(QPHelper.Decrypt(QPEncodeStr, Encoding.UTF8));
+            #endregion
+
+            Console.ReadLine();
         }
     }
 }

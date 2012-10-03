@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="EncryptHelper\DESHelper.cs" />
     <Compile Include="EncryptHelper\MD5Helper.cs" />
+    <Compile Include="EncryptHelper\QPHelper.cs" />
     <Compile Include="FileHelper\FileHelper.cs" />
     <Compile Include="FileHelper\FileHelperException.cs" />
     <Compile Include="FileHelper\Infrastructure\IValueFile.cs" />
