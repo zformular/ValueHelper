@@ -7,3 +7,12 @@ E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHe
 E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.pdb
 E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\Microsoft.Office.Interop.Excel.dll
 E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.pdb
+E:\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.exe.config
+E:\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.exe
+E:\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.pdb
+E:\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.dll
+E:\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\Microsoft.Office.Interop.Excel.dll
+E:\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.pdb
+E:\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.exe
+E:\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.pdb

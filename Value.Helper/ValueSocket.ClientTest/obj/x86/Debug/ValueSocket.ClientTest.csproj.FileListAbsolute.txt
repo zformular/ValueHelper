@@ -6,3 +6,11 @@ E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Value
 E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.exe
 E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.pdb
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.exe
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.pdb
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.dll
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Microsoft.Office.Interop.Excel.dll
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.pdb
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.exe
+E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.pdb
