@@ -1,0 +1,8 @@
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\bin\ValueHelper.WebTest.dll
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\bin\ValueHelper.WebTest.pdb
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\bin\ValueHelper.dll
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\bin\Microsoft.Office.Interop.Excel.dll
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\bin\ValueHelper.pdb
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\obj\Debug\ResolveAssemblyReference.cache
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\obj\Debug\ValueHelper.WebTest.dll
+E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper.WebTest\obj\Debug\ValueHelper.WebTest.pdb

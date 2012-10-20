@@ -2,36 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.IO;
-using ValueHelper.Infrastructure;
 using ValueHelper.EncryptHelper;
+using ValueHelper.Infrastructure;
 
-namespace ValueHelper.test
+namespace ValueHelper.Test
 {
     class Program
     {
         static void Main(string[] args)
         {
+
             #region ValueFileHelper
 
-            //var baseUrl = AppDomain.CurrentDomain.BaseDirectory;
-            //var filefullName = Path.Combine(baseUrl, "test.txt");
-            //IValueFile fileHelper = new FileHelper(filefullName);
-
-            //try
-            //{
-            //    // 写入内容
-            //    fileHelper.WriteContent("test");
-
-            //    // 读取内容
-            //    var content = fileHelper.ReadContent();
-            //    Console.WriteLine(content);
-            //}
-            //catch (System.Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
-            //Console.WriteLine("FileHelper Result");
+            //FileBase fileHelper = FileBase.GetFileBase("E:\\Text2.txt");
+            //fileHelper.CreateFile();
+            ////fileHelper.WriteLine("asdsadasdsadsadaanak\r\ndasdasd", true);
+            //String context = fileHelper.ReadContext();
+            //Console.WriteLine(context);
 
             #endregion
 

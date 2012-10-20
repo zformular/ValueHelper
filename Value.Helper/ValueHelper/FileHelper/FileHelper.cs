@@ -3,122 +3,60 @@
  |                                            |
  |            Author: zformular               |
  |        E-mail: zformular@163.com           |
- |             Date: 8.29.2012                |
+ |             Date: 10.4.2012                |
  |                                            |
  ╰==========================================╯
+ 
 */
 
 using System;
 using System.IO;
-using System.Text.RegularExpressions;
-using System.Linq;
-using System.Threading;
-using ValueHelper.Exception;
-using ValueHelper.Infrastructure;
+using ValueHelper.FileHelper.OfficeHelper;
 using System.Text;
 
-namespace ValueHelper
+namespace ValueHelper.FileHelper
 {
-    public class FileHelper : IValueFile
+    public sealed partial class FileHelper : FileBase.FileBase
     {
-        private String newLine = Environment.NewLine;
-
-        private String fileFullName;
-        private String fileName;
-        private String content;
-
-        public FileHelper() { }
-
-        public FileHelper(String fileFullName)
+        public FileHelper(String fileName)
         {
-            this.fileFullName = fileFullName;
-            this.fileName = Path.GetFileName(this.fileFullName);
+            FileFullName = fileName;
+            FileName = Path.GetFileName(fileName);
+            FileExtension = Path.GetExtension(fileName);
+            DirectoryPath = Path.GetDirectoryName(fileName);
         }
 
-        public FileHelper(String fileFullName, String fileName)
+        public override Boolean CreateFile()
         {
-            this.fileFullName = fileFullName;
-            this.fileName = fileName;
+
+            if (CheckParams())
+            {
+                return CreateFile(FileFullName);
+            }
+            else
+                return false;
         }
 
-        #region IValueFile 成员
-
-        /// <summary>
-        ///  读写文件全名
-        /// </summary>
-        public String FileFullName
+        public override Boolean Write(String context)
         {
-            get { return fileFullName; }
-            set { fileFullName = value; }
+            return Write(context, false);
         }
 
-        /// <summary>
-        ///  读写文件名
-        /// </summary>
-        public String FileName
+        public override Boolean Write(String context, Boolean append)
         {
-            get { return fileName; }
-            set { fileName = value; }
-        }
-
-        /// <summary>
-        ///  读写文件内容
-        /// </summary>
-        public String Content
-        {
-            get { return content; }
-            set { content = value; }
-        }
-
-        /// <summary>
-        ///  创建文件
-        /// </summary>
-        /// <param name="fileFullName"></param>
-        public void CreateFile(String fileFullName)
-        {
-            if (File.Exists(fileFullName))
-                throw new FileExsistException();
-
             try
             {
-                Monitor.Enter(this);
-                var filePath = this.getFilePath(fileFullName);
-                if (!Directory.Exists(filePath))
-                    Directory.CreateDirectory(filePath);
-
-                FileStream fileStream = new FileStream(fileFullName, FileMode.Create);
-                fileStream.Flush();
-                fileStream.Close();
-                Monitor.Exit(this);
-            }
-            catch (System.Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        /// <summary>
-        ///  判断文本是否存在
-        /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
-        public Boolean ContentExsist(String content)
-        {
-            if (String.IsNullOrEmpty(fileFullName))
-                throw new ArgumentNullException("FileFullName", "文件名不能为空");
-
-            if (String.IsNullOrEmpty(content))
-                throw new ArgumentNullException("Content", "文件内容不能为空!");
-            try
-            {
-                var texts = File.ReadAllLines(fileFullName, Encoding.UTF8);
-                var result = false;
-                for (int index = 0; index < texts.Length; index++)
+                if (File.Exists(FileFullName))
                 {
-                    if (texts[index].Contains(content))
-                        result = true;
+                    StreamWriter streamWriter = new StreamWriter(FileFullName, append);
+                    streamWriter.Write(context);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                    streamWriter.Dispose();
+                    streamWriter = null;
+                    return true;
                 }
-                return result;
+                return false;
             }
             catch
             {
@@ -126,134 +64,94 @@ namespace ValueHelper
             }
         }
 
-        /// <summary>
-        ///  写入内容
-        /// </summary>
-        public void WriteContent()
+        public override Boolean WriteLine(String context)
         {
-            this.writeContent();
+            return WriteLine(context, false);
         }
 
-        /// <summary>
-        ///  写入内容
-        /// </summary>
-        /// <param name="content"></param>
-        public void WriteContent(String content)
-        {
-            this.content = content;
-            this.writeContent();
-        }
-
-        /// <summary>
-        ///  读取内容
-        /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
-        public String ReadContent(String content)
-        {
-            if (String.IsNullOrEmpty(fileFullName))
-                throw new ArgumentNullException("FileFullName", "文件名不能为空");
-
-            if (String.IsNullOrEmpty(content))
-                throw new ArgumentNullException("Content", "文件内容不能为空!");
-
-            var texts = File.ReadAllLines(fileFullName, Encoding.UTF8);
-            var result = String.Empty;
-            for (int index = 0; index < texts.Length; index++)
-            {
-                if (texts[index].Contains(content))
-                    result += (texts[index] + ";");
-            }
-            return result;
-        }
-
-        /// <summary>
-        ///  读取内容
-        /// </summary>
-        /// <returns></returns>
-        public String ReadContent()
-        {
-            if (String.IsNullOrEmpty(fileFullName))
-                throw new ArgumentNullException("FileFullName", "文件名不能为空");
-
-            StreamReader streamReader = new StreamReader(fileFullName);
-
-            var result = streamReader.ReadToEnd();
-            return result;
-        }
-
-        #endregion
-
-        /// <summary>
-        ///  写入内容
-        /// </summary>
-        private void writeContent()
-        {
-            if (String.IsNullOrEmpty(fileFullName))
-                throw new ArgumentNullException("FileFullName", "文件名不能为空");
-
-            if (content == null)
-                throw new ArgumentNullException("Content", "文件内容不能为空!");
-
-            try
-            {
-                Monitor.Enter(this);
-                if (!File.Exists(fileFullName))
-                    throw new FileNotFoundException();
-
-                StreamWriter streamWriter = new StreamWriter(fileFullName, true);
-                streamWriter.WriteLine(content);
-                streamWriter.Flush();
-                streamWriter.Close();
-                Monitor.Exit(this);
-            }
-            catch (System.Exception ex)
-            {
-                throw (ex);
-            }
-        }
-
-        /// <summary>
-        ///  获得文件名
-        /// </summary>
-        /// <param name="fileFullName"></param>
-        /// <returns></returns>
-        private String getFileName(String fileFullName)
+        public override Boolean WriteLine(String context, Boolean append)
         {
             try
             {
-                var result = Path.GetFileName(fileFullName);
-                return result;
+                if (File.Exists(FileFullName))
+                {
+                    StreamWriter streamWriter = new StreamWriter(FileFullName, append);
+                    streamWriter.WriteLine(context);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                    streamWriter.Dispose();
+                    streamWriter = null;
+                    return true;
+                }
+                return false;
             }
-            catch (ArgumentException ex)
+            catch
             {
-                throw (ex);
+                return false;
             }
         }
 
-        private String getFilePath(String fileFulName)
+        public override String ReadContext()
         {
-            var fileName = Path.GetFileName(fileFulName);
-            var filePath = fileFulName.Substring(0, fileFulName.Length - fileName.Length - 1);
-            return filePath;
+            try
+            {
+                if (CheckParams())
+                {
+                    return ReadContext(FileFullName);
+                }
+                return "";
+            }
+            catch
+            {
+                return "";
+            }
+        }
+    }
+
+    public partial class FileHelper
+    {
+        /// <summary>
+        ///  创建文件
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns>成功返回true,失败返回false</returns>
+        public static Boolean CreateFile(String fileName)
+        {
+            try
+            {
+                if (File.Exists(fileName))
+                    return false;
+                else
+                {
+                    String directoryPath = Path.GetDirectoryName(fileName);
+                    if (!Directory.Exists(directoryPath))
+                        Directory.CreateDirectory(directoryPath);
+
+                    FileStream fileStream = new FileStream(fileName, FileMode.CreateNew);
+                    fileStream.Close();
+                    fileStream.Dispose();
+                    return true;
+                }
+            }
+            catch (IOException)
+            {
+                return false;
+            }
         }
 
         /// <summary>
-        ///  获得扩展名
+        ///  读取文件
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        private String getExtensionName(String fileName)
+        public static String ReadContext(String fileName)
         {
-            try
-            {
-                var result = Path.GetExtension(fileName);
-                return result;
-            }
-            catch (ArgumentException ex)
-            {
-                throw (ex);
-            }
+            StreamReader streamReader = new StreamReader(fileName, Encoding.Default);
+            String result = streamReader.ReadToEnd();
+            streamReader.Close();
+            streamReader.Dispose();
+            streamReader = null;
+            return result;
         }
     }
 }

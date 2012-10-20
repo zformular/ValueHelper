@@ -1,0 +1,8 @@
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.exe
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.pdb
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.dll
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Microsoft.Office.Interop.Excel.dll
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.pdb
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.exe
+E:\ValueProgram\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.pdb

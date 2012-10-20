@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ValueHelper</RootNamespace>
     <AssemblyName>ValueHelper</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,11 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=11.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -43,18 +53,52 @@
     <Compile Include="EncryptHelper\DESHelper.cs" />
     <Compile Include="EncryptHelper\MD5Helper.cs" />
     <Compile Include="EncryptHelper\QPHelper.cs" />
+    <Compile Include="FileHelper\FileBase\FileBase.cs" />
     <Compile Include="FileHelper\FileHelper.cs" />
-    <Compile Include="FileHelper\FileHelperException.cs" />
     <Compile Include="FileHelper\Infrastructure\IValueFile.cs" />
+    <Compile Include="FileHelper\OfficeHelper\ExcelHelper.cs" />
+    <Compile Include="FileHelper\OfficeHelper\WordHelper.cs" />
+    <Compile Include="Infrastructure\KeyvalList.cs" />
+    <Compile Include="Infrastructure\SafeList.cs" />
+    <Compile Include="Infrastructure\ValueStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomHelper\Infrastructure\RandomType.cs" />
     <Compile Include="RandomHelper\RandomHelper.cs" />
-    <Compile Include="StringHelper\StringHelper.cs" />
+    <Compile Include="TypeHelper\StringHelper.cs" />
     <Compile Include="ValueExtension\CharExtension.cs" />
+    <Compile Include="ValueSocket\Infrastructure\AsyncUserToken.cs" />
+    <Compile Include="ValueSocket\Infrastructure\BufferManager.cs" />
+    <Compile Include="ValueSocket\Infrastructure\ObjectState.cs" />
+    <Compile Include="ValueSocket\Infrastructure\ServerSetting.cs" />
+    <Compile Include="ValueSocket\Infrastructure\SocketAsyncEventrgsPool.cs" />
+    <Compile Include="ValueSocket\Infrastructure\SocketHandlers.cs" />
+    <Compile Include="ValueSocket\SocketBase\ServerBase.cs" />
+    <Compile Include="ValueSocket\SocketEvents\ReceiveEventArgs.cs" />
+    <Compile Include="ValueSocket\SocketEvents\SocketEventArgs.cs" />
+    <Compile Include="ValueSocket\ValueClient.cs" />
+    <Compile Include="ValueSocket\ValueServer.cs" />
+    <Compile Include="WebHelper\ValueTag\Infrastructure\IAjaxTag.cs" />
+    <Compile Include="WebHelper\ValueTag\Infrastructure\IHtmlTag.cs" />
+    <Compile Include="WebHelper\ValueTag\Infrastructure\TagHelper.cs" />
+    <Compile Include="WebHelper\ValueTag\TagBase\AjaxTagBase.cs" />
+    <Compile Include="WebHelper\ValueTag\TagBase\MvcTwTagAjax.cs" />
+    <Compile Include="WebHelper\ValueTag\TagBase\MvcTwTagHtml.cs" />
+    <Compile Include="WebHelper\ValueTag\TagBase\HtmlTagBase.cs" />
+    <Compile Include="WebHelper\ValueTag\ValueHtml.cs" />
+    <Compile Include="WebHelper\ValueUpload\Infrastructure\EventDelegate.cs" />
+    <Compile Include="WebHelper\ValueUpload\Infrastructure\GlobalVar.cs" />
+    <Compile Include="WebHelper\ValueUpload\Infrastructure\ProcessType.cs" />
+    <Compile Include="WebHelper\ValueUpload\Infrastructure\UploadBase.cs" />
+    <Compile Include="WebHelper\ValueUpload\Infrastructure\StaitcWorkerRequest.cs" />
+    <Compile Include="WebHelper\ValueUpload\Infrastructure\UploadInfo.cs" />
+    <Compile Include="WebHelper\ValueUpload\UploadEvents\UpdateEventArgs.cs" />
+    <Compile Include="WebHelper\ValueUpload\UploadEvents\UploadingEventArgs.cs" />
+    <Compile Include="WebHelper\ValueUpload\ValueUpload.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EncryptHelper\Infrastructure\" />
+    <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

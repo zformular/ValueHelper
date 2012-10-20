@@ -2,22 +2,18 @@
 
 namespace ValueHelper.Infrastructure
 {
-    public interface IValueFile
+    public interface IValueFile : IDisposable
     {
-        String FileFullName { get; set; }
+        Boolean CreateFile();
 
-        String FileName { get; set; }
+        Boolean Write(String context);
 
-        String Content { get; set; }
+        Boolean Write(String context, Boolean append);
 
-        Boolean ContentExsist(String content);
+        Boolean WriteLine(String context);
 
-        void WriteContent();
+        Boolean WriteLine(String context, Boolean append);
 
-        void WriteContent(String content);
-
-        String ReadContent();
-
-        String ReadContent(String content);
+        String ReadContext();
     }
 }

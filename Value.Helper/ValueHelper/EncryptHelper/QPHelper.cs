@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+  >>>------ Copyright (c) 2012 zformular ----> 
+ |                                            |
+ |            Author: zformular               |
+ |        E-mail: zformular@163.com           |
+ |             Date: 10.3.2012                |
+ |                                            |
+ ╰==========================================╯
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

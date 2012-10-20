@@ -10,3 +10,4 @@ E:\ValueProgram\Value.Helper\Value.Helper\DynamicLink\ValueHelper.pdb
 E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper\obj\Debug\ResolveAssemblyReference.cache
 E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper\obj\Debug\ValueHelper.dll
 E:\ValueProgram\Value.Helper\Value.Helper\ValueHelper\obj\Debug\ValueHelper.pdb
+E:\ValueProgram\Value.Helper\Value.Helper\DynamicLink\ValueHelper.dll.config
