@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using ValueHelper.EncryptHelper;
 using ValueHelper.Infrastructure;
+using ValueHelper.MIMEHelper;
+using ValueHelper.TDCodeHelper.QR2DCodeHelper;
+using ValueHelper.TDCodeHelper.QR2DCodeHelper.Infrastructure;
+using System.Windows.Forms;
+//using ValueHelper.OtherHelper;
 
 namespace ValueHelper.Test
 {
@@ -22,7 +27,7 @@ namespace ValueHelper.Test
 
             #endregion
 
-            var source = "hello world!";
+            var source = "123456";
             #region ValueMD5Helper
 
             var encryptCodeMD5 = MD5Helper.Encrypt(source);
@@ -101,7 +106,58 @@ namespace ValueHelper.Test
             Console.WriteLine(QPHelper.Decrypt(QPEncodeStr, Encoding.UTF8));
             #endregion
 
+            #region MIMEHelper
+
+            var mime = "\r\nContent-Type: multipart/alternative; \r\n\tboundary=\"----=_Part_65603903_1101983096.1350874042576\"\r\nDate: Mon, 22 Oct 2012 10:47:23 +0800 (CST)\r\nFrom: =?UTF-8?B?572R5piT6YKu5Lu25Lit5b+D?= <phone@service.netease.com>\r\nSubject: =?UTF-8?B?572R5piT6YKu566x5L2/55So5pWw5o2u6LSm5Y2V?=\r\n =?UTF-8?B?IO+8iDIwMTLlubQ55pyI77yJ?=\r\n";
+            ValueMIME.SerializeMIME(mime);
+
+            #endregion
+
+            #region TDCodeHelper
+
+
+
+            #endregion
+
+            //Byte asd = (Byte)'s';
+            //var asdddd = asd | 0;
+
+            //var asdd = Convert.ToString(asd, 2);
+            //Value2DCode value2DCode = new Value2DCode();
+
+            //var bitmap = value2DCode.ProduceBitmap("123");
+            //bitmap.Save("D:\\二维码测试.jpg");
+
+
+            #region ValueWebcam
+
+
+            //Form frmtest = new Form();
+            //frmtest.Width = 400;
+            //frmtest.Height = 400;
+            //frmtest.Controls.Add(valueWebcam.Content);
+            //valueWebcam.OpenWebcam();
+
+            //frmtest.FormClosing += new FormClosingEventHandler(frmtest_FormClosing);
+
+
+            #endregion
+
+            /// 未实现
+            //////////#region JSONHelper
+
+            //////////var jsonstr = "[{\"UserId\":\"11\",\"UserName\":{\"FirstName\":\"323\",\"LastName\":\"2323\"},\"Keys\":[\"xiaoming\",\"xiaohong\"]},{\"UserId\":\"22\",\"UserName\":{\"FirstName\":\"323\",\"LastName\":\"2323\"},\"Keys\":[\"xiaoming\",\"xiaohong\"]},{\"UserId\":\"33\",\"UserName\":{\"FirstName\":\"323\",\"LastName\":\"2323\"},\"Keys\":[\"xiaoming\",\"xiaohong\"]}]";
+            //////////JSONHelper.Parse(jsonstr);
+
+            //////////#endregion
+
             Console.ReadLine();
+        }
+
+        static ValueWebcam.ValueWebcam valueWebcam = new ValueWebcam.ValueWebcam(0, 0, 200, 200);
+        static void frmtest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            valueWebcam.CloseWebcam();
         }
     }
 }

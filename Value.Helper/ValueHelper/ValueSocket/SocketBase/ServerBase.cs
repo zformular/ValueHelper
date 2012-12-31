@@ -23,7 +23,8 @@ namespace ValueHelper.ValueSocket.SocketBase
     {
         protected Socket Server;
         protected IPEndPoint localEndPoint;
-        protected event ReceiveHandler OnBaseReceive;
+        protected event ReceiveHandler OnReceive;
+        protected event AcceptHandler OnAccept;
 
         private Int32 connectNumber;
         private Int32 bufferSize = 1024;
@@ -162,6 +163,11 @@ namespace ValueHelper.ValueSocket.SocketBase
             SocketAsyncEventArgs readEventArgs = readWritePool.Pop();
             ((AsyncUserToken)readEventArgs.UserToken).Socket = acceptEventArgs.AcceptSocket;
 
+            if (OnAccept != null)
+            {
+                OnAccept(new SocketEventArgs(acceptEventArgs.AcceptSocket));
+            }
+
             // 接受到的连接执行接收操作
             Boolean willRaiseEvent = acceptEventArgs.AcceptSocket.ReceiveAsync(readEventArgs);
             if (!willRaiseEvent)
@@ -189,8 +195,8 @@ namespace ValueHelper.ValueSocket.SocketBase
                 Byte[] buffer = new Byte[readedLength];
                 Buffer.BlockCopy(receiveEventArgs.Buffer, receiveEventArgs.Offset, buffer, 0, readedLength);
 
-                if (OnBaseReceive != null)
-                    OnBaseReceive(new ReceiveEventArgs(token.Socket) { Data = buffer });
+                if (OnReceive != null)
+                    OnReceive(new ReceiveEventArgs(token.Socket) { Data = buffer });
 
                 Boolean willRaiseEvent = token.Socket.ReceiveAsync(receiveEventArgs);
                 if (!willRaiseEvent)

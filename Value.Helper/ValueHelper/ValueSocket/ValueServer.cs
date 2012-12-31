@@ -14,6 +14,7 @@ namespace ValueHelper.ValueSocket
         private const Int32 sendTimeout = 10000;
 
         public event ReceiveHandler OnReceive;
+        public event AcceptHandler OnAccept;
 
         public ValueServer(String ipAddress, Int32 port, Encoding encoding)
             : base(new ServerSetting { IPAddress = ipAddress, Port = port, ConnectNumber = 1000, BufferSize = 1024 })
@@ -23,7 +24,8 @@ namespace ValueHelper.ValueSocket
 
         public void Start()
         {
-            OnBaseReceive += new ReceiveHandler(ValueServer_OnBaseReceive);
+            base.OnReceive += new ReceiveHandler(ValueServer_OnBaseReceive);
+            base.OnAccept += new AcceptHandler(ValueServer_OnAccept);
 
             Server.Bind(base.localEndPoint);
             Server.Listen(100);
@@ -45,6 +47,13 @@ namespace ValueHelper.ValueSocket
         {
             if (OnReceive != null)
                 OnReceive(e);
+        }
+
+
+        private void ValueServer_OnAccept(SocketEventArgs e)
+        {
+            if (OnAccept != null)
+                OnAccept(e);
         }
 
         public new void Dispose()

@@ -17,11 +17,17 @@ namespace ValueSocket.ServerTest
             server = new ValueServer("127.0.0.1", 3000, Encoding.UTF8);
             server.Start();
             server.OnReceive += new ReceiveHandler(server_OnReceive);
+            server.OnAccept += new AcceptHandler(server_OnAccept);
 
             //ValueHelper.ValueSocket.Server asd = new ValueHelper.ValueSocket.Server(1000, 1024);
             //asd.Init();
             //asd.Start(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3000));
             Console.ReadLine();
+        }
+
+        static void server_OnAccept(ValueHelper.ValueSocket.SocketEvents.SocketEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private static void server_OnReceive(ValueHelper.ValueSocket.SocketEvents.ReceiveEventArgs e)

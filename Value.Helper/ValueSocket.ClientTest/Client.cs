@@ -22,7 +22,7 @@ namespace ValueSocket.ClientTest
             client.Receive();
             Thread.Sleep(10000);
             client.Send("I'm Test Packet too");
-            client.Close();
+            //client.Close();
 
             Console.Read();
         }

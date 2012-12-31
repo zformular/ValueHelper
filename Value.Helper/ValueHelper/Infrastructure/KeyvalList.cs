@@ -24,9 +24,24 @@ namespace ValueHelper.Infrastructure
             keyvalList = new List<Keyval<TKey, TValue>>();
         }
 
+        public Int32 Count { get { return keyvalList.Count; } }
+
         public Keyval<TKey, TValue> this[Int32 index]
         {
-            get { return keyvalList[index]; }
+            get
+            {
+                if (index >= keyvalList.Count)
+                    throw new InvalidOperationException("索引值必须消息集合个数");
+
+                return keyvalList[index];
+            }
+            set
+            {
+                if (index >= keyvalList.Count)
+                    throw new InvalidOperationException("索引值必须消息集合个数");
+
+                keyvalList[index] = value;
+            }
         }
 
         public TValue this[String key]
@@ -40,6 +55,24 @@ namespace ValueHelper.Infrastructure
                 }
                 throw new InvalidOperationException("不存在键 " + key);
             }
+            set
+            {
+                for (int i = 0; i < keyvalList.Count; i++)
+                {
+                    if (key == keyvalList[i].Key.ToString())
+                    {
+                        keyvalList[i].Value = value;
+                        return;
+                    }
+                }
+                throw new InvalidOperationException("不存在键 " + key);
+
+            }
+        }
+
+        public void Add(TKey key, TValue value)
+        {
+            this.keyvalList.Add(new Keyval<TKey, TValue> { Key = key, Value = value });
         }
 
         public void Add(Keyval<TKey, TValue> keyval)
@@ -52,14 +85,41 @@ namespace ValueHelper.Infrastructure
             this.keyvalList.AddRange(keyvals);
         }
 
+        public List<Keyval<TKey, TValue>> ToList()
+        {
+            return keyvalList;
+        }
+
         public void Remove(Keyval<TKey, TValue> keyval)
         {
             this.keyvalList.Remove(keyval);
         }
 
+        public void Remove(String key)
+        {
+            Keyval<TKey, TValue> target = null;
+            foreach (var item in keyvalList)
+            {
+                if (item.Key.ToString() == key)
+                    target = item;
+            }
+            if (target != null)
+                this.keyvalList.Remove(target);
+        }
+
         public void RemoveAt(Int32 index)
         {
             this.keyvalList.RemoveAt(index);
+        }
+
+        public Boolean ContainsKey(TKey key)
+        {
+            foreach (Keyval<TKey, TValue> item in keyvalList)
+            {
+                if (item.Key.Equals(key))
+                    return true;
+            }
+            return false;
         }
 
         public void Clear()
@@ -100,5 +160,13 @@ namespace ValueHelper.Infrastructure
         public TKey Key { get; set; }
 
         public TValue Value { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is TKey)
+                return (Object)this.Key == obj;
+            else
+                return false;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace ValueHelper.Infrastructure
     public class ValueStack<T> : IDisposable
     {
         public Int32 Count { get; private set; }
-        private Entry<T> top;
+        private Entry<T> top = null;
 
         public virtual void Push(T data)
         {
@@ -18,14 +18,14 @@ namespace ValueHelper.Infrastructure
 
         public virtual T Pop()
         {
-            if (top == null)
+            if (top != null)
             {
-                throw new InvalidOperationException();
+                Count--;
+                T result = top.Data;
+                top = top.Next;
+                return result;
             }
-            Count--;
-            T result = top.Data;
-            top = top.Next;
-            return result;
+            throw new InvalidOperationException();
         }
 
         public Boolean Empty()
@@ -46,10 +46,10 @@ namespace ValueHelper.Infrastructure
 
         public void Dispose()
         {
-            do
+            while (Count > 0)
             {
                 Pop();
-            } while (Count > 0);
+            }
         }
     }
 

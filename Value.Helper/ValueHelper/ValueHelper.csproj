@@ -41,15 +41,23 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\ValueNode.cs" />
+    <Compile Include="OtherHelper\JSONHelper.cs" />
+    <Compile Include="ValueWebcam\ValueWebcam.cs" />
+    <Compile Include="Win32\Win32API.cs" />
+    <Compile Include="TDCodeHelper\BasicStruct\Converter.cs" />
+    <Compile Include="TDCodeHelper\BasicStruct\I2DCode.cs" />
     <Compile Include="EncryptHelper\DESHelper.cs" />
     <Compile Include="EncryptHelper\MD5Helper.cs" />
     <Compile Include="EncryptHelper\QPHelper.cs" />
@@ -58,13 +66,30 @@
     <Compile Include="FileHelper\Infrastructure\IValueFile.cs" />
     <Compile Include="FileHelper\OfficeHelper\ExcelHelper.cs" />
     <Compile Include="FileHelper\OfficeHelper\WordHelper.cs" />
+    <Compile Include="Infrastructure\IKeyvalList.cs" />
     <Compile Include="Infrastructure\KeyvalList.cs" />
     <Compile Include="Infrastructure\SafeList.cs" />
     <Compile Include="Infrastructure\ValueStack.cs" />
+    <Compile Include="MIMEHelper\Infrastructure\Attachment.cs" />
+    <Compile Include="MIMEHelper\Infrastructure\MIMEncrypt.cs" />
+    <Compile Include="MIMEHelper\Infrastructure\MIMEHead.cs" />
+    <Compile Include="MIMEHelper\Infrastructure\MIMEModel.cs" />
+    <Compile Include="MIMEHelper\Infrastructure\MIMEPrefix.cs" />
+    <Compile Include="MIMEHelper\Infrastructure\MIMETemplate.cs" />
+    <Compile Include="MIMEHelper\Serializer\DataSerializer.cs" />
+    <Compile Include="MIMEHelper\ValueMIME.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomHelper\Infrastructure\RandomType.cs" />
     <Compile Include="RandomHelper\RandomHelper.cs" />
-    <Compile Include="TypeHelper\StringHelper.cs" />
+    <Compile Include="OtherHelper\StringHelper.cs" />
+    <Compile Include="TDCodeHelper\BasicStruct\ModeType.cs" />
+    <Compile Include="TDCodeHelper\QR2DCodeHelper\Infrastructure\CodeMatrix.cs" />
+    <Compile Include="TDCodeHelper\QR2DCodeHelper\Infrastructure\ProperStruct.cs" />
+    <Compile Include="TDCodeHelper\QR2DCodeHelper\Serializer\DataSerializer.cs" />
+    <Compile Include="TDCodeHelper\QR2DCodeHelper\Serializer\ISerializer.cs" />
+    <Compile Include="TDCodeHelper\QR2DCodeHelper\Serializer\NumericSerializer.cs" />
+    <Compile Include="TDCodeHelper\QR2DCodeHelper\ValueSerializer.cs" />
+    <Compile Include="TDCodeHelper\QR2DCodeHelper\Value2DCode.cs" />
     <Compile Include="ValueExtension\CharExtension.cs" />
     <Compile Include="ValueSocket\Infrastructure\AsyncUserToken.cs" />
     <Compile Include="ValueSocket\Infrastructure\BufferManager.cs" />
@@ -94,11 +119,14 @@
     <Compile Include="WebHelper\ValueUpload\UploadEvents\UpdateEventArgs.cs" />
     <Compile Include="WebHelper\ValueUpload\UploadEvents\UploadingEventArgs.cs" />
     <Compile Include="WebHelper\ValueUpload\ValueUpload.cs" />
+    <Compile Include="Win32\Win32Constant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ValueWebcam\Infrastructure\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
