@@ -10,87 +10,54 @@
 */
 
 using System;
-using ValueHelper.Infrastructure;
 using System.IO;
+using ValueHelper.Infrastructure;
 using ValueHelper.FileHelper.OfficeHelper;
 
 namespace ValueHelper.FileHelper.FileBase
 {
-    public class FileBase : IValueFile
+    public abstract class FileBase : IDisposable
     {
-        protected String FileFullName = null;
+        public abstract Boolean CreateFile();
+
+        protected String Name = null;
+        protected String DPath = null;
         protected String FileName = null;
-        protected String DirectoryPath = null;
         protected String FileExtension = null;
 
-        private static FileBase fileBase;
-
-        public static FileBase GetFileBase(String fileName)
+        protected void SetParams(String fileName)
         {
-            String fileExtension = Path.GetExtension(fileName).ToLower();
-            switch (fileExtension)
-            {
-                case ".txt":
-                    fileBase = new FileHelper(fileName);
-                    break;
-                case ".doc":
-                    fileBase = new WordHelper(fileName);
-                    break;
-                case ".xls":
-                    fileBase = new ExcelHelper(fileName);
-                    break;
-                default:
-                    fileBase = new FileHelper(fileName);
-                    break;
-            }
-            return fileBase;
+            Name = Path.GetFileNameWithoutExtension(fileName);
+            DPath = Path.GetDirectoryName(fileName);
+
+            FileName = fileName;
+            FileExtension = Path.GetExtension(fileName).ToLower();
         }
 
-        public Boolean CheckParams()
+        protected Boolean CheckParams()
         {
-            if (String.IsNullOrEmpty(FileFullName))
+            if (String.IsNullOrEmpty(Name))
+                return false;
+            if (String.IsNullOrEmpty(DPath))
                 return false;
             if (String.IsNullOrEmpty(FileName))
                 return false;
-            if (String.IsNullOrEmpty(DirectoryPath))
+            if (String.IsNullOrEmpty(FileExtension))
                 return false;
 
             return true;
         }
 
-        #region IValueFile 成员
-
-        public virtual Boolean CreateFile()
+        protected void CreateDirectory()
         {
-            throw new NotImplementedException();
+            if (!String.IsNullOrEmpty(DPath))
+            {
+                if (!Directory.Exists(DPath))
+                {
+                    Directory.CreateDirectory(DPath);
+                }
+            }
         }
-
-        public virtual Boolean Write(String context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Boolean Write(string context, Boolean append)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Boolean WriteLine(String context)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual Boolean WriteLine(string context, Boolean append)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual String ReadContext()
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
 
         #region IDisposable 成员
 
@@ -101,9 +68,9 @@ namespace ValueHelper.FileHelper.FileBase
             {
                 if (disposing)
                 {
-                    FileFullName = null;
+                    Name = null;
+                    DPath = null;
                     FileName = null;
-                    DirectoryPath = null;
                     FileExtension = null;
                 }
                 disposed = true;

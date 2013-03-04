@@ -8,6 +8,7 @@ using ValueHelper.MIMEHelper;
 using ValueHelper.TDCodeHelper.QR2DCodeHelper;
 using ValueHelper.TDCodeHelper.QR2DCodeHelper.Infrastructure;
 using System.Windows.Forms;
+using ValueHelper.FileHelper;
 //using ValueHelper.OtherHelper;
 
 namespace ValueHelper.Test
@@ -108,14 +109,49 @@ namespace ValueHelper.Test
 
             #region MIMEHelper
 
-            var mime = "\r\nContent-Type: multipart/alternative; \r\n\tboundary=\"----=_Part_65603903_1101983096.1350874042576\"\r\nDate: Mon, 22 Oct 2012 10:47:23 +0800 (CST)\r\nFrom: =?UTF-8?B?572R5piT6YKu5Lu25Lit5b+D?= <phone@service.netease.com>\r\nSubject: =?UTF-8?B?572R5piT6YKu566x5L2/55So5pWw5o2u6LSm5Y2V?=\r\n =?UTF-8?B?IO+8iDIwMTLlubQ55pyI77yJ?=\r\n";
-            ValueMIME.SerializeMIME(mime);
+            var mime = "Content-Type: multipart/alternative; \r\n\tboundary=\"----=_Part_73323_510855019.1362313432376\"\r\nDate: Sun, 3 Mar 2013 20:23:52 +0800 (CST)\r\nFrom: zformular <zformular@163.com>\r\nSubject: =?GBK?B?0ru2/sj9y8TO5cH5xt+wy77Fyq7KrtK7yq62/squyP0=?=\r\n =?GBK?B?yq7LxMquzuXKrsH5yq7G38qusMvKrr7Ftv7Krrb+yq4=?=\r\n";
+            //mime = "Content-Transfer-Encoding: 8Bit\r\nContent-Type: multipart/mixed;\r\n\tboundary=\"----=_NextPart_5099C48D_D63B7690_6364F090\"\r\n";
+            var sad = ValueMIME.SerializeMIME(mime);
 
             #endregion
 
             #region TDCodeHelper
 
 
+
+            #endregion
+
+            #region FileHelper
+
+            //FileManager.CreateFile("D:\\test.txt");
+            //FileManager.CreateFile("D:\\test.doc");
+            //FileManager.CreateFile("D:\\test.xls");
+            //FileManager.CreateFile("D:\\test.mdb");
+
+            //var access = FileManager.GetAccessHelp();
+            //access.SetFileName("D:\\test.mdb");
+
+            //var cols = new ValueHelper.FileHelper.OfficeHelper.AccessHelp.ASColumn[2];
+            //cols[0] = new FileHelper.OfficeHelper.AccessHelp.ASColumn
+            //{
+            //    DefinedSize = 9,
+            //    Name = "col0",
+            //    Type = ADOX.DataTypeEnum.adInteger,
+            //    Key = new ValueHelper.FileHelper.OfficeHelper.AccessHelp.ColumnKey()
+            //    {
+            //        Type = ADOX.KeyTypeEnum.adKeyPrimary
+            //    }
+            //};
+            //cols[1] = new FileHelper.OfficeHelper.AccessHelp.ASColumn
+            //{
+            //    DefinedSize = 30,
+            //    Name = "col1",
+            //    Type = ADOX.DataTypeEnum.adVarWChar
+            //};
+
+            //var tables = access.GetTables();
+            ////access.DropTable(tables[0]);
+            //access.CreateTable("test", cols);
 
             #endregion
 
@@ -152,12 +188,6 @@ namespace ValueHelper.Test
             //////////#endregion
 
             Console.ReadLine();
-        }
-
-        static ValueWebcam.ValueWebcam valueWebcam = new ValueWebcam.ValueWebcam(0, 0, 200, 200);
-        static void frmtest_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            valueWebcam.CloseWebcam();
         }
     }
 }

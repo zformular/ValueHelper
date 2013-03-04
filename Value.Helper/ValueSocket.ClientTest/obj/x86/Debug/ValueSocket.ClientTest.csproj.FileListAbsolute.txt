@@ -13,3 +13,24 @@ E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.pdb
 E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.exe
 E:\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.pdb
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.exe
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.pdb
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.dll
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.pdb
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.exe
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.pdb
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.exe
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.pdb
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueHelper.pdb
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.exe
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\obj\x86\Debug\ValueSocket.ClientTest.pdb
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Microsoft.Office.Interop.Word.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Interop.ADOX.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\office.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\Interop.ADODB.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueSocket.ClientTest\bin\Debug\ValueSocket.ClientTest.exe.config

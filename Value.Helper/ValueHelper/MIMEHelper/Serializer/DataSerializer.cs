@@ -87,11 +87,14 @@ namespace ValueHelper.MIMEHelper.Serializer
         public static String SerializeSubject(String data)
         {
             var value = data ?? MIME;
-
-            var groups = Regex.Match(value, MIMETemplate.Subject).Groups;
             var subject = String.Empty;
-            for (int i = 1; i < groups.Count; i++)
-                subject = String.Concat(subject, groups[i], " ");
+            var groups = Regex.Match(value, MIMETemplate.Subject).Groups;
+            for (int i = 1; i <= 5; i++)
+            {
+                if (groups["g" + i].Value != String.Empty)
+                    subject = String.Concat(subject, groups["g" + i].Value);
+            }
+
             return MIMEDecode(subject);
         }
 

@@ -28,6 +28,8 @@ namespace ValueHelper.MIMEHelper.Infrastructure
         {
             try
             {
+                if (charset == "utf8") charset = "UTF-8";
+
                 Byte[] bytes = GetBytesByPattern(contentTransferEncoding, context);
                 String result = Encoding.GetEncoding(charset).GetString(bytes);
                 return result;
@@ -67,59 +69,5 @@ namespace ValueHelper.MIMEHelper.Infrastructure
             }
             return bytes;
         }
-
-        ///// <summary>
-        /////  UTF8解码
-        ///// </summary>
-        ///// <param name="encryPattern"></param>
-        ///// <param name="context"></param>
-        ///// <returns></returns>
-        //public static String ConvertUTF8(String encryPattern, String context)
-        //{
-        //    Byte[] bytes = getBytesByPattern(encryPattern, context);
-        //    String result = Encoding.UTF8.GetString(bytes);
-        //    return result;
-        //}
-
-        ///// <summary>
-        /////  GBK解码
-        ///// </summary>
-        ///// <param name="encryPattern"></param>
-        ///// <param name="context"></param>
-        ///// <returns></returns>
-        //public static String ConvertGBK(String encryPattern, String context)
-        //{
-        //    Byte[] bytes = getBytesByPattern(encryPattern, context);
-        //    String result = Encoding.GetEncoding("gbk").GetString(bytes);
-        //    return result;
-        //}
-
-        ///// <summary>
-        /////  GB18030解码
-        ///// </summary>
-        ///// <param name="encryPattern"></param>
-        ///// <param name="context"></param>
-        ///// <returns></returns>
-        //public static String ConvertGB18030(String encryPattern, String context)
-        //{
-        //    Byte[] bytes = getBytesByPattern(encryPattern, context);
-        //    String result = Encoding.GetEncoding("gb18030").GetString(bytes);
-        //    return result;
-        //}
-
-        ///// <summary>
-        /////  GB2312解码
-        ///// </summary>
-        ///// <param name="encryPattern"></param>
-        ///// <param name="context"></param>
-        ///// <returns></returns>
-        //public static String ConvertGB2312(String encryPattern, String context)
-        //{
-        //    Byte[] bytes = getBytesByPattern(encryPattern, context);
-        //    String result = Encoding.GetEncoding("gb2312").GetString(bytes);
-        //    return result;
-        //}
-
-
     }
 }

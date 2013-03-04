@@ -15,3 +15,27 @@ E:\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.pdb
 E:\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.exe
 E:\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.pdb
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.exe.config
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.exe
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.pdb
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.exe
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.pdb
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.dll
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.pdb
+D:\VS Program\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.exe.config
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.exe
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.pdb
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.exe
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.Test.pdb
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\ValueHelper.pdb
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\Microsoft.Office.Interop.Excel.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\Microsoft.Office.Interop.Word.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\Interop.ADOX.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\office.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\Microsoft.Vbe.Interop.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\Interop.ADOX.dll
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\obj\x86\Debug\ValueHelper.Test.csproj.ResolveComReference.cache
+D:\ValueProgram\Private\SUBJECT\Value.Helper\Value.Helper\ValueHelper.Test\bin\Debug\Interop.ADODB.dll

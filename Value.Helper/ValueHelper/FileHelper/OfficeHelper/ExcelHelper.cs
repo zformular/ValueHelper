@@ -18,83 +18,45 @@ namespace ValueHelper.FileHelper.OfficeHelper
 {
     public partial class ExcelHelper : FileBase.FileBase
     {
-        public ExcelHelper(String fileName)
+        public ExcelHelper() { }
+
+        /// <summary>
+        ///  设置要处理的文件
+        /// </summary>
+        /// <param name="fileName"></param>
+        public ExcelHelper(string fileName)
         {
-            FileFullName = fileName;
-            FileName = Path.GetFileName(fileName);
-            FileExtension = Path.GetExtension(fileName);
-            DirectoryPath = Path.GetDirectoryName(fileName);
+            base.SetParams(fileName);
         }
+
+        #region Create
 
         public override bool CreateFile()
         {
             if (CheckParams())
             {
-                return CreateFile(FileFullName);
+                if (File.Exists(base.FileName))
+                    return false;
+
+                base.CreateDirectory();
+                return createFile();
             }
             return false;
         }
 
-        public override string ReadContext()
-        {
-            Application excelApp = new Application();
-            excelApp.Visible = false;
-            Workbook excelBook = excelApp.Workbooks.Open(FileFullName, missingValue, missingValue, missingValue, missingValue,
-                missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue, missingValue,
-                missingValue, missingValue);
-            String result = String.Empty;
-            Int32 sheetIndex = 1;
-            foreach (Worksheet excelSheet in excelBook.Sheets)
-            {
-                result += "Sheet" + sheetIndex + ":\r\n";
-                Range rang = excelSheet.get_Range("A1", "Z24");
-                var value = ((Array)rang.Cells.Value2);
-                for (int rowIndex = 1; rowIndex < 25; rowIndex++)
-                {
-                    String rowValue = String.Empty;
-                    for (int index = 1; index < 25; index++)
-                    {
-                        if (value.GetValue(rowIndex, index) != null)
-                        {
-                            rowValue += value.GetValue(rowIndex, index);
-                            rowValue += " ";
-                        }
-                    }
-                    if (rowValue != String.Empty)
-                    {
-                        result += rowValue;
-                        result += "\r\n";
-                    }
-                }
-                sheetIndex++;
-            }
-            excelBook.Close(missingValue, missingValue, missingValue);
-            excelApp.Quit();
-
-            return result;
-        }
-    }
-
-    public partial class ExcelHelper
-    {
-        public static Object missingValue = Missing.Value;
-
-        public static Boolean CreateFile(Object fileName)
+        private Object missingValue = Missing.Value;
+        private Boolean createFile()
         {
             try
             {
-                if (!File.Exists(fileName.ToString()))
-                {
-                    Application excelApp = new Application();
-                    excelApp.Visible = false;
-                    Workbook excelBook = excelApp.Workbooks.Add(missingValue);
-                    excelBook.SaveAs(fileName, missingValue, missingValue, missingValue, missingValue, missingValue, XlSaveAsAccessMode.xlNoChange
-                        , missingValue, missingValue, missingValue, missingValue, missingValue);
-                    excelBook.Close(missingValue, missingValue, missingValue);
-                    excelApp.Quit();
-                    return true;
-                }
-                return false;
+                Application excelApp = new Application();
+                excelApp.Visible = false;
+                Workbook excelBook = excelApp.Workbooks.Add(missingValue);
+                excelBook.SaveAs(base.FileName, missingValue, missingValue, missingValue, missingValue, missingValue, XlSaveAsAccessMode.xlNoChange
+                    , missingValue, missingValue, missingValue, missingValue, missingValue);
+                excelBook.Close(missingValue, missingValue, missingValue);
+                excelApp.Quit();
+                return true;
             }
             catch
             {
@@ -102,9 +64,12 @@ namespace ValueHelper.FileHelper.OfficeHelper
             }
         }
 
-        public static String ReadContext(Object fileName)
+        public new void Dispose()
         {
-            return null;
+            missingValue = null;
+            base.Dispose();
         }
+
+        #endregion
     }
 }

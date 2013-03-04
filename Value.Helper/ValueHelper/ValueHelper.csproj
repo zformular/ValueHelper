@@ -42,9 +42,6 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,18 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileHelper\FileManager.cs" />
+    <Compile Include="FileHelper\OfficeHelper\AccessHelp.cs" />
+    <Compile Include="FileHelper\Windows\TextHelper.cs" />
     <Compile Include="Infrastructure\ValueNode.cs" />
+    <Compile Include="OtherHelper\DateHelper.cs" />
     <Compile Include="OtherHelper\JSONHelper.cs" />
-    <Compile Include="ValueWebcam\ValueWebcam.cs" />
-    <Compile Include="Win32\Win32API.cs" />
     <Compile Include="TDCodeHelper\BasicStruct\Converter.cs" />
     <Compile Include="TDCodeHelper\BasicStruct\I2DCode.cs" />
     <Compile Include="EncryptHelper\DESHelper.cs" />
     <Compile Include="EncryptHelper\MD5Helper.cs" />
     <Compile Include="EncryptHelper\QPHelper.cs" />
     <Compile Include="FileHelper\FileBase\FileBase.cs" />
-    <Compile Include="FileHelper\FileHelper.cs" />
-    <Compile Include="FileHelper\Infrastructure\IValueFile.cs" />
     <Compile Include="FileHelper\OfficeHelper\ExcelHelper.cs" />
     <Compile Include="FileHelper\OfficeHelper\WordHelper.cs" />
     <Compile Include="Infrastructure\IKeyvalList.cs" />
@@ -102,30 +99,26 @@
     <Compile Include="ValueSocket\SocketEvents\SocketEventArgs.cs" />
     <Compile Include="ValueSocket\ValueClient.cs" />
     <Compile Include="ValueSocket\ValueServer.cs" />
-    <Compile Include="WebHelper\ValueTag\Infrastructure\IAjaxTag.cs" />
-    <Compile Include="WebHelper\ValueTag\Infrastructure\IHtmlTag.cs" />
-    <Compile Include="WebHelper\ValueTag\Infrastructure\TagHelper.cs" />
-    <Compile Include="WebHelper\ValueTag\TagBase\AjaxTagBase.cs" />
-    <Compile Include="WebHelper\ValueTag\TagBase\MvcTwTagAjax.cs" />
-    <Compile Include="WebHelper\ValueTag\TagBase\MvcTwTagHtml.cs" />
-    <Compile Include="WebHelper\ValueTag\TagBase\HtmlTagBase.cs" />
-    <Compile Include="WebHelper\ValueTag\ValueHtml.cs" />
-    <Compile Include="WebHelper\ValueUpload\Infrastructure\EventDelegate.cs" />
-    <Compile Include="WebHelper\ValueUpload\Infrastructure\GlobalVar.cs" />
-    <Compile Include="WebHelper\ValueUpload\Infrastructure\ProcessType.cs" />
-    <Compile Include="WebHelper\ValueUpload\Infrastructure\UploadBase.cs" />
-    <Compile Include="WebHelper\ValueUpload\Infrastructure\StaitcWorkerRequest.cs" />
-    <Compile Include="WebHelper\ValueUpload\Infrastructure\UploadInfo.cs" />
-    <Compile Include="WebHelper\ValueUpload\UploadEvents\UpdateEventArgs.cs" />
-    <Compile Include="WebHelper\ValueUpload\UploadEvents\UploadingEventArgs.cs" />
-    <Compile Include="WebHelper\ValueUpload\ValueUpload.cs" />
-    <Compile Include="Win32\Win32Constant.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ValueWebcam\Infrastructure\" />
+    <COMReference Include="ADODB">
+      <Guid>{2A75196C-D9EB-4129-B803-931327F72D5C}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="ADOX">
+      <Guid>{00000600-0000-0010-8000-00AA006D2EA4}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

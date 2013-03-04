@@ -18,65 +18,53 @@ namespace ValueHelper.FileHelper.OfficeHelper
 {
     public partial class WordHelper : FileBase.FileBase
     {
-        public WordHelper(String fileName)
+        public WordHelper() { }
+
+        /// <summary>
+        ///  设置要处理的文件
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void SetFileName(string fileName)
         {
-            FileFullName = fileName;
-            FileName = Path.GetFileName(fileName);
-            FileExtension = Path.GetExtension(fileName);
-            DirectoryPath = Path.GetDirectoryName(fileName);
+            base.SetParams(fileName);
         }
+
+        public WordHelper(string fileName)
+        {
+            base.SetParams(fileName);
+        }
+
+        #region Create
 
         public override bool CreateFile()
         {
             if (CheckParams())
             {
-                return CreateFile(FileFullName);
+                if (File.Exists(base.FileName))
+                    return false;
+
+                base.CreateDirectory();
+                return createFile();
             }
-            else
-                return false;
-
+            return false;
         }
 
-        public override bool Write(string context)
-        {
-            return Write(context, false);
-        }
-
-        public override bool Write(string context, bool append)
-        {
-            return writeContext(context, append);
-        }
-
-        public override bool WriteLine(string context)
-        {
-            return WriteLine(context, false);
-        }
-
-        public override bool WriteLine(string context, bool append)
-        {
-            return writeContext(context, append);
-        }
-
-        private Boolean writeContext(string context, bool append)
+        private Object missingValue = Missing.Value;
+        private Object formate = WdSaveFormat.wdFormatDocument;
+        private Boolean createFile()
         {
             try
             {
-                if (File.Exists(FileFullName))
-                {
-                    Object fileName = (Object)FileFullName;
-                    Application wordApp = new Application();
-                    Document wordDoc = wordApp.Documents.Open(ref fileName, ref missingValue, ref missingValue, ref missingValue
+                var name = (Object)base.FileName;
+                Application wordApp = new Application();
+                wordApp.Visible = false;
+                Document wordDoc = wordApp.Documents.Add(ref missingValue, ref missingValue, ref missingValue, ref missingValue);
+                wordDoc.SaveAs(ref name, ref formate, ref missingValue, ref missingValue, ref missingValue, ref missingValue
                     , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue
-                    , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue);
-                    if (!append)
-                        wordDoc.Content.Text = "";
-                    wordDoc.Paragraphs.Last.Range.Text += context;
-                    wordDoc.Save();
-                    wordDoc.Close(ref missingValue, ref missingValue, ref missingValue);
-                    wordApp.Quit(ref missingValue, ref missingValue, ref missingValue);
-                    return true;
-                }
-                return false;
+                    , ref missingValue, ref missingValue, ref missingValue, ref missingValue);
+                wordDoc.Close(ref missingValue, ref missingValue, ref missingValue);
+                wordApp.Quit(ref missingValue, ref missingValue, ref missingValue);
+                return true;
             }
             catch
             {
@@ -84,54 +72,82 @@ namespace ValueHelper.FileHelper.OfficeHelper
             }
         }
 
-        public override string ReadContext()
-        {
-            return ReadContext((Object)FileFullName);
-        }
-    }
+        #endregion
 
-    public partial class WordHelper
-    {
-        private static Object missingValue = Missing.Value;
-        private static Object formate = WdSaveFormat.wdFormatDocument;
+        #region Read
 
-        public static Boolean CreateFile(Object fileName)
+        public String ReadText()
         {
-            if (!File.Exists(fileName.ToString()))
+            if (!CheckParams())
+                throw new ArgumentNullException("请先绑定文件名");
+
+            if (!File.Exists(base.FileName))
+                throw new ArgumentNullException("文件不存在");
+
+            var name = (Object)base.FileName;
+
+            Application wordApp = new Application();
+            wordApp.Visible = false;
+            Document wordDoc = wordApp.Documents.Open(ref name, ref missingValue, ref missingValue, ref missingValue
+                , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue
+                , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue);
+
+            String result = wordDoc.Content.Text;
+            result = System.Text.RegularExpressions.Regex.Replace(result, @"\r",
+                new System.Text.RegularExpressions.MatchEvaluator(delegate(System.Text.RegularExpressions.Match match)
             {
+                return "\r\n";
+            }), System.Text.RegularExpressions.RegexOptions.Compiled);
+            wordDoc.Close(ref missingValue, ref missingValue, ref missingValue);
+            wordApp.Quit(ref missingValue, ref missingValue, ref missingValue);
+            return result;
+        }
+
+        #endregion
+
+        #region Write
+
+        public Boolean Write(String context, bool append)
+        {
+            if (!CheckParams())
+                throw new ArgumentNullException("请先绑定文件名");
+
+            if (!File.Exists(base.FileName))
+                throw new ArgumentNullException("文件不存在");
+
+            return write(context, append);
+        }
+
+        private Boolean write(string context, bool append)
+        {
+            try
+            {
+                Object fileName = (Object)base.FileName;
                 Application wordApp = new Application();
-                wordApp.Visible = false;
-                Document wordDoc = wordApp.Documents.Add(ref missingValue, ref missingValue, ref missingValue, ref missingValue);
-                wordDoc.SaveAs(ref fileName, ref formate, ref missingValue, ref missingValue, ref missingValue, ref missingValue
-                    , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue
-                    , ref missingValue, ref missingValue, ref missingValue, ref missingValue);
+                Document wordDoc = wordApp.Documents.Open(ref fileName, ref missingValue, ref missingValue, ref missingValue
+                , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue
+                , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue);
+                if (!append)
+                    wordDoc.Content.Text = "";
+                wordDoc.Paragraphs.Last.Range.Text += context;
+                wordDoc.Save();
                 wordDoc.Close(ref missingValue, ref missingValue, ref missingValue);
                 wordApp.Quit(ref missingValue, ref missingValue, ref missingValue);
                 return true;
             }
-            return false;
+            catch
+            {
+                return false;
+            }
         }
 
-        public static String ReadContext(Object fileName)
+        #endregion
+
+        public new void Dispose()
         {
-            if (File.Exists(fileName.ToString()))
-            {
-                Application wordApp = new Application();
-                wordApp.Visible = false;
-                Document wordDoc = wordApp.Documents.Open(ref fileName, ref missingValue, ref missingValue, ref missingValue
-                    , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue
-                    , ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue, ref missingValue);
-                String result = wordDoc.Content.Text;
-                result = System.Text.RegularExpressions.Regex.Replace(result, @"\r",
-                    new System.Text.RegularExpressions.MatchEvaluator(delegate(System.Text.RegularExpressions.Match match)
-                {
-                    return "\r\n";
-                }), System.Text.RegularExpressions.RegexOptions.Compiled);
-                wordDoc.Close(ref missingValue, ref missingValue, ref missingValue);
-                wordApp.Quit(ref missingValue, ref missingValue, ref missingValue);
-                return result;
-            }
-            return "";
+            missingValue = null;
+            formate = null;
+            base.Dispose();
         }
     }
 }
